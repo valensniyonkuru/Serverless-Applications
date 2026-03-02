@@ -23,7 +23,7 @@ exports.handler = async (event) => {
       return { statusCode: 400, body: JSON.stringify({ message: "status must be PENDING, IN_PROGRESS, or COMPLETED" }) };
     }
 
-    const isAdmin = claims["cognito:groups"]?.includes("task_admin_group");
+    const isAdmin = claims["cognito:groups"]?.includes("Admin");
     if (!isAdmin) {
       const getResult = await ddb.send(new GetCommand({
         TableName: TABLE_NAME,

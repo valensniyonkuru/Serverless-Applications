@@ -30,7 +30,7 @@ exports.handler = async (event) => {
     }
 
     const task = result.Item;
-    const isAdmin = claims["cognito:groups"]?.includes("task_admin_group");
+    const isAdmin = claims["cognito:groups"]?.includes("Admin");
     if (!isAdmin) {
       const assignee = task.assignedTo;
       const assignedToUser = Array.isArray(assignee) ? assignee[0] : assignee;
